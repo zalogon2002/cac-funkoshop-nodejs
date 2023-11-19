@@ -6,18 +6,16 @@
     <title>Inicio</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/admin/productos">Productos</a></li>
-                
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>Inicio</h1>
-    </main>
-    <footer>Copyright 2023</footer>
+  <%- include('partials/header') %>
+  <main> 
+    <h1>Inicio</h1>
+    <p><%= mensaje %></p>
+     <ul>
+      <% productos.forEach(producto => { %> 
+        <li><%= producto.nombre %></li>
+      <% }) %>
+    </ul>
+  </main>
+  <%- include('partials/footer') %>
 </body>
-</html>
+</html>   

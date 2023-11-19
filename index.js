@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path  = require("path");
 const methodOverride = require("method-override");
 
 // app.use((req, res, next) => {
@@ -10,7 +11,7 @@ app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
 app.use(methodOverride("_method"));
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(express.urlencoded({ extended: false }));
 

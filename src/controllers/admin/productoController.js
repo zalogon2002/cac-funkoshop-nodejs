@@ -1,9 +1,23 @@
+const path = require("path");
+const sharp = require("sharp");
+
 const index = (req, res) => {
     res.send("Listado de productos");
 };
 
+const create = (req, res) => {
+    res.render("admin/create");
+};
+
+
 const store = (req, res) => {
-    console.log(req.body);
+    console.log(req.body, req.file);
+
+    if (req.file) {
+    sharp(req.file.buffer)
+    .resize(300)
+    .toFile(path.resolve(__dirname, '../../../public/uploads/yacare.png'));
+    }
     res.send("Crear Producto");
   }
 
@@ -19,6 +33,7 @@ const destroy = (req, res) => {
 
 module.exports = { 
     index, 
+    create,
     store,
     update,
     destroy,

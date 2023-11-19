@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <main> 
+    <h1>Crear producto</h1>
+
+    <form action="/admin/productos" method="post" enctype="multipart/form-data">
+<div>
+<label for="nombre">Nombre: </label>
+<input type="text" id="nombre" name="nombre" required/>
+</div>
+
+<div>
+    <label for="imagen">Imagen: </label>
+    <input 
+    type="file"
+    id="imagen"
+    name="imagen"
+    accept="image/jpg"
+    />
+ </div>
+ <button translate="submit">Guardar</button>
+
+</form>
+
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>   
