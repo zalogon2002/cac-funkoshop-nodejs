@@ -1,6 +1,8 @@
 const path = require("path");
 const sharp = require("sharp");
 
+const { validationResult } = require("express-validator");
+
 const index = (req, res) => {
     res.send("Listado de productos");
 };
@@ -12,6 +14,15 @@ const create = (req, res) => {
 
 const store = (req, res) => {
     console.log(req.body, req.file);
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.render("admin/create", {
+            values: req.body,
+            errors: errors.array(),
+        });
+    }
 
     if (req.file) {
     sharp(req.file.buffer)
