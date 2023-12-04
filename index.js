@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const path  = require("path");
@@ -6,6 +8,8 @@ const methodOverride = require("method-override");
 // app.use((req, res, next) => {
 //   res.send("Sitio en mantenimiento");
 // });
+
+const sequelize = require("./src/models/connection");
 
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
@@ -24,6 +28,15 @@ app.use((req, res, next) => {
   res.status(404).send("La pagina no existe");
 });
 
-const PORT = 3000;
+// const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+app.listen(PORT, async () => {
+try {
+  await sequelize.authenticate();
+} catch(error) {
+  console.log(error);
+}
+
+console.log(`http://localhost:${PORT}`);
+});

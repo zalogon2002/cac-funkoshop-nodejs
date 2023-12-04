@@ -3,7 +3,17 @@ const sharp = require("sharp");
 
 const { validationResult } = require("express-validator");
 
-const index = (req, res) => {
+const model = require("../../models/Producto");
+
+const index = async (req, res) => {
+try {
+const productos = await model.findAll();
+    // console.log(productos);
+    res.render("admin/index", { productos });
+} catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+}
     res.send("Listado de productos");
 };
 
