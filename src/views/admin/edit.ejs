@@ -8,7 +8,7 @@
 <body>
   <%- include('../partials/header') %>
   <main> 
-    <h1>Crear producto</h1>
+    <h1>Editar producto</h1>
 
     <% if (typeof errors != 'undefined') { %>
       <ul>
@@ -18,8 +18,12 @@
       </ul>
         <% } %>
 
+<!-- SOBREESCRIBO CON EL OVERRIDE DEL index.js EL METODO PUT -->
+<!-- SE ENVIA COMO POST PERO LLEGA COMO PUT -->
+    <form action="/admin/productos/<%= values.id %>?_method=PUT" 
+    method="post" 
+    enctype="multipart/form-data">
 
-    <form action="/admin/productos" method="post" enctype="multipart/form-data">
 <div>
 <label for="nombre">Nombre: </label>
 <input 
@@ -46,6 +50,13 @@ min="1"
     <label for="imagen">Imagen: </label>
     <input 
     type="file" id="imagen" name="imagen" accept="image/*" />
+    <div>
+      <!-- YA LE INDICO AL USUARIO QUE IMAGEN VA A TENER AHORA PARA EDITAR -->
+      <img 
+      width="100"
+      src="/uploads/productos/producto_<%= values.id %>.jpg" 
+      alt="<%= values.nombre %>"
+      />
  </div>
  <button translate="submit">Guardar</button>
 

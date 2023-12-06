@@ -1,11 +1,14 @@
+// ACA REQUIERO UN PEDACITO DEL EXPRESS (EL ROUTER) Y ABAJO LO EJECUTO - QUE ES LA PAGINA DE INICIO EN EL NAVEGADOR
 const { Router } = require("express");
 const router = Router();
 
 // const express = require("express");
 // const router = express.Router();
 
+// ACA SI TRAIGO TODO EL CONTROLADOR - PRIMERO LLAMO AL CORNTOLADOR Y DESPUES LLAMO A CADA METODO (EJ TRAER EL INDEX)
 const controller = require("../controllers/mainController");
 
+// ACA LLAMO AL METODO PARA TRAER EL INDEX
 router.get("/", controller.index);
 
 module.exports = router;

@@ -1,6 +1,8 @@
+// CREAMOS EL PRODUCTO
 const { DataTypes } = require("sequelize");
 const sequelize = require("./connection");
 
+// DEFINIMOS LA ENTIDAD/TABLA "PRODUCTO" CON TODOS LOS DATOS QUE NECESITAMOS
 const Producto = sequelize.define("Producto", {
     nombre: {
       type: DataTypes.STRING,
@@ -12,9 +14,11 @@ const Producto = sequelize.define("Producto", {
     },
 });
 
+// PARA QUE CUANDO YO REQUIERA EL MODELO LO CREE SI NO EXISTE
 (async () => {
-    // await sequelize.sync({ force: true });
-    await sequelize.sync();
+  await sequelize.sync();
+  // await sequelize.sync({ force: true });
+  // await sequelize.sync({ alter: true });
 })();
 
 

@@ -1,3 +1,5 @@
+<!-- EN EL ADMIN CREAMOS ESTA VISTA QUE SE LLAMA index.ejs -->
+<!-- ES LA PAGINA PRINCIPAL DE LA PARTE ADMINISTRATIVA DE PRODUCTOS (EL INDEX O EL ADMIN) -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,6 +31,7 @@ td {
                   <th>#</th>
                   <th>Nombre</th>
                   <th>Precio</th> 
+                  <th>Imagen</th>
                   <th></th> 
                 </tr>
             </thead>
@@ -38,12 +41,50 @@ td {
                     <td><%= producto.id %></td>
                     <td><%= producto.nombre %></td>
                     <td>$ <%= producto.precio %></td>
-                    <td>Editar | Borrar</td>
-                </tr>
+                    <td><img 
+                        width="100"
+                        src="/uploads/productos/producto_<%= producto.id %>.jpg" 
+                        alt="<%= producto.nombre %>"
+                        />
+                    </td>
+
+            <td>
+                        <a href="/admin/productos/<%= producto.id %>/edit">Editar</a> |
+                        <!-- <a href="/admin/productos/<%= producto.id %>/edit">Editar</a> -->
+    <!-- </main>
+    HACGO UN OVERRIDE (?_) DEL METODO POST CON EL METODO DELETE -->
+    <!-- VA A LLEGAR A ESE METODO SIMPLEMENTE CON ESTE PARAMETRO (%= producto.id) -->
+               <form 
+               class="form-delete"
+               style="display: inline-block"
+               action="/admin/productos/<%= producto.id %>?_method=DELETE" 
+               method="post"
+               >
+                <button type="submit">Borrar</button>
+               </form>
+            </td>
+                    </tr>
                     <% }) %>
             </tbody>
         </table>
     </main>
     <%- include('../partials/footer') %>
+
+    <script>
+        document.addEventListener("click", (event) => {
+        
+            // event.target ES EL BOTONCITO - BUSCA EL FORMULARIO QUE TENGA CERCA 
+            // DE ESE FORMULARIO FIJATE LA LISTA DE CLASES QUE TIENE - SI TIENE LA CLASE "form-deleteE" EVITA QUE SE ENVIE
+        //    PREGUNTALE SI ESTA SEGURO QUE LO QUIERE BORRAR - SI ME DICE QUE SI (QUE ES IGUAL A true), ESE FORMULARIO, ENVIALO Y BORRA ESE PRODUCTO / REGISTRO DE LA BBDD Y TB LA IMAGEN ASOCIADA
+            if (event.target.closest("form").classList.contains("form-delete")) {
+                event.preventDefault();
+
+                const borrar = confirm("Está seguro?");
+                if (borrar) {
+                    event.target.closest("form").submit();
+                }
+            }
+        });
+    </script>
 </body>
 </html>   

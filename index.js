@@ -12,8 +12,10 @@ const methodOverride = require("method-override");
 const sequelize = require("./src/models/connection");
 
 app.set("view engine", "ejs");
-app.set("views", "./src/views");
+// app.set("views", "./src/views");
+app.set("views", path.join(__dirname, "/src/views"));
 
+// USO EL METODO OVERRIDE PARA SOBREESCRIBIR EL METODO PUT EN EL FILE edit.ejs (LINEA 22)
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/public")));
 
@@ -33,6 +35,7 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, async () => {
 try {
+  // UTILIZA LOS DATOS QUE ESTAN EN .env, EN LA CONEXION, Y CON ESTO SE AUTENTICA - SI ESTA TODO BIEN, YA ESTAS CONECTADO A LA BBDD
   await sequelize.authenticate();
 } catch(error) {
   console.log(error);

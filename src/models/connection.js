@@ -1,3 +1,5 @@
+// CREAMOS LA CONFIGURACION DE LA CONEXION
+// REQUIERO UN PEDACITO DE SEQUELIZE (QUE ES UN OBJETO) PARA CREAR LA CONEXION
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
