@@ -28,7 +28,7 @@ const productos = await model.findAll();
     console.log(error);
     res.status(500).send(error);
 }
-    res.send("Listado de productos");
+    // res.send("Listado de productos");
 };
 
 const create = (req, res) => {

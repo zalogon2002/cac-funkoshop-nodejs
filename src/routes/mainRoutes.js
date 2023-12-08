@@ -11,6 +11,8 @@ const controller = require("../controllers/mainController");
 // ACA LLAMO AL METODO PARA TRAER EL INDEX
 router.get("/", controller.index);
 
+
+// EXPORTAMOS ESTE MODULO router PARA PODER USARLO FUERA
 module.exports = router;
 
 
