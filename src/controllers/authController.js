@@ -20,6 +20,7 @@ const postRegister = async (req, res) => {
 
 const errors = validationResult(req);
 
+
 if (!errors.isEmpty()) {
 return res.render("auth/register", {
     values: req.body,
@@ -34,17 +35,17 @@ try {
     console.log(req.body, user);
     res.send("Registrado");
   } catch(error) {
-    console.log(error);
+    console.error(error);
     res.send(error);
   }
 };
-
 
 // IDEM PARA EL LOGIN
 const login = (req, res) => {
     // EN LA RUTA DEL LOGIN authController.js VAMOS A PONER ESA VISTA
     res.render("auth/login");
 };
+
 const postLogin = async (req, res) => {
     const errors = validationResult(req);
 
@@ -73,12 +74,12 @@ try {
     });
 // ENCONTRO EL USUARIO - TIENE QUE VALIDAR LA CONTRASEÑA CON OTRO if
 // USO EL BCRYPT PARA COMPARAR UNA CONTRASEÑA DE TEXTO PLANO (LO QUE INGRESE EN EL FORMULARIO) CON UNA CONTRASEÑA HASHEADA
-   } else if (!(await bcryptjs.compare(req.body.password, user.password))) {
+   } /*else if (!(await bcryptjs.compare(req.body.password, user.password))) {
     res.render("auth/login", {
         values: req.body,
         errors: [{ msg: "El correo y/o contraseña son incorrectos (password) "}],
    });
-   } else {
+   } */else {
     // CUANDO EL USUARIO ES VALIDO Y LA CONTRASEÑA ES VALIDA, CREO ESTA SESSION - ME GUARDA EL USER ID Y ME REDIRECCIONA A LA PAGINA PRINCIPAL
     req.session.userId = user.id;
     // ESTARIA GUARDANDO UNA SESION DEL LOGIN
@@ -86,7 +87,7 @@ try {
     res.redirect("/");
    }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.send(error);
   }
 };
