@@ -9,10 +9,15 @@
   <%- include('partials/header') %>
   <main> 
     <h1>Inicio</h1>
-    <p><%= mensaje %></p>
      <ul>
       <% productos.forEach(producto => { %> 
+        <img 
+    width="100"
+    src="/uploads/productos/producto_<%= producto.id %>.jpg" 
+    alt="<%= producto.nombre %>"
+    />
         <li><%= producto.nombre %></li>
+        <li><%= producto.precio %></li>
       <% }) %>
     </ul>
   </main>
