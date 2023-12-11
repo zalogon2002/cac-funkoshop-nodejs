@@ -19,8 +19,6 @@ const validations = [
     
 
 
-
-
 const controller = require("../../controllers/admin/productoController")
 
 // CRUD = Create, Read, Update, Delete

@@ -4,7 +4,15 @@ const sequelize = require("./connection");
 
 // DEFINIMOS LA ENTIDAD/TABLA "PRODUCTO" CON TODOS LOS DATOS QUE NECESITAMOS
 const Producto = sequelize.define("Producto", {
-    nombre: {
+  codigo: {
+    type: DataTypes.STRING,
+  allowNull: true,
+  },
+  categoria: {
+    type: DataTypes.TINYINT,
+  allowNull: false,
+  },
+  nombre: {
       type: DataTypes.STRING,
     allowNull: false,
     },
