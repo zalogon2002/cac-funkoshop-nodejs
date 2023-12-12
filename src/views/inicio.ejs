@@ -86,7 +86,7 @@
 
         <section class="coleccion container">
           <article class="coleccion__content">
-            <h3 class="coleccion__title"><%= producto.categoria %></h3>
+            <h3 class="coleccion__title"><%- producto.categoria == 7 ? '<p>Harry<p>' : '<p>Star</p>' %></h3>
             <p class="coleccion__text">
               <%= producto.nombre %>
             </p>
@@ -128,7 +128,7 @@
     />
                   </picture>
                   <div class="card-item__content">
-                    <p class="card-item__licence"><%= producto.categoria %></p>
+                    <p class="card-item__licence"><%- producto.categoria == 7 ? '<p>Harry<p>' : '<p>Star</p>' %></p>
                     <h4 class="card-item__name"><%= producto.nombre %></h4>
                     <p class="card-item__price">$ <%= producto.precio %></p>
                     <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
