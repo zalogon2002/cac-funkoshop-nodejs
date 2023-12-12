@@ -1,31 +1,59 @@
-<!-- EN EL ADMIN CREAMOS ESTA VISTA QUE SE LLAMA index.ejs -->
-<!-- ES LA PAGINA PRINCIPAL DE LA PARTE ADMINISTRATIVA DE PRODUCTOS (EL INDEX O EL ADMIN) -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- <style>
-        table {
-  margin: 1em 0;
-}
-th,
-td {
-  border: 1px solid;
-}
-    </style> -->
+    <title>ADMIN | Funkshop</title>
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/admin.css">
 </head>
-
 <body>
-    <%- include('../partials/header') %>
-    <main>
-        <h1>Listado de productos</h1>
+    <header> 
+        <nav class="navbar container">
+          <picture class="navbar__logo">
+            <a href="/">
+              <img src="../../img/branding/logo_light_horizontal.svg" alt="logotipo Funkoshop"/>
+            </a>
+          </picture>
+          <ul class="navbar__menu">
+            <li class="navbar__item">
+              <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="../../pages/admin/admin.html">ADMIN</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="../../index.html">SALIR</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="../../pages/shop/carrito.html">
+                <img src="../../img/icons/cart-icon.svg" alt="carrito" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main class="admin-container">
+        <div class="admin container">
+          <div class="admin__search container">
+              <img src="../../img/icons/search_icon.svg" alt="buscar-producto">
+              <input type="search" name="buscar" id="buscar">
+          </div>
+        <div class="agregar container">
+          <section class="agregar__listado">
+            <h2 class="agregar__listado__tittle">LISTADO DE PRODUCTOS</h2>
+            <div class="agregar__boton">       
+              <a class="agregar__boton__tittle" href="/admin/productos/create">AGREGAR</a>
+              <button class="agregar__boton__dibujo">+</button>
+            </div>
+           
+          </section>    
+          
+          
 
-        <a href="/admin/productos/create">Crear</a>
 
-        <table>
+          <table class="agregar__tabla">
             <thead>
                 <tr>
                   <th>Id</th>
@@ -45,14 +73,14 @@ td {
                     <td><%= producto.nombre %></td>
                     <td>$ <%= producto.precio %></td>
                     <td><img 
-                        width="100"
+                        width="100"    height="100";
                         src="/uploads/productos/producto_<%= producto.id %>.jpg" 
                         alt="<%= producto.nombre %>"
                         />
                     </td>
 
             <td>
-                        <a href="/admin/productos/<%= producto.id %>/edit">Editar</a> |
+                        <a href="/admin/productos/<%= producto.id %>/edit"><img class="agregar__tabla__lapiz" src="../../img/icons/edit_pencil.svg" alt="editar-producto"></a> |
                         <!-- <a href="/admin/productos/<%= producto.id %>/edit">Editar</a> -->
     <!-- </main>
     HACGO UN OVERRIDE (?_) DEL METODO POST CON EL METODO DELETE -->
@@ -63,31 +91,38 @@ td {
                action="/admin/productos/<%= producto.id %>?_method=DELETE" 
                method="post"
                >
-                <button type="submit">Borrar</button>
+                <button type="submit"><img class="agregar__tabla__tacho" src="../../img/icons/delete_trash.svg" alt="borrar-producto"></button>
                </form>
             </td>
                     </tr>
                     <% }) %>
             </tbody>
         </table>
-    </main>
-    <%- include('../partials/footer') %>
 
-    <script>
-        document.addEventListener("click", (event) => {
-        
-            // event.target ES EL BOTONCITO - BUSCA EL FORMULARIO QUE TENGA CERCA 
-            // DE ESE FORMULARIO FIJATE LA LISTA DE CLASES QUE TIENE - SI TIENE LA CLASE "form-deleteE" EVITA QUE SE ENVIE
-        //    PREGUNTALE SI ESTA SEGURO QUE LO QUIERE BORRAR - SI ME DICE QUE SI (QUE ES IGUAL A true), ESE FORMULARIO, ENVIALO Y BORRA ESE PRODUCTO / REGISTRO DE LA BBDD Y TB LA IMAGEN ASOCIADA
-            if (event.target.closest("form").classList.contains("form-delete")) {
-                event.preventDefault();
-
-                const borrar = confirm("Está seguro?");
-                if (borrar) {
-                    event.target.closest("form").submit();
-                }
-            }
-        });
-    </script>
+        </div>
+        </div> 
+      </main>
+      <footer>
+          <nav class="navbar container">
+            <ul class="navbar__item">
+              <li class="navbar__item">
+                <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
+              </li>
+              <li class="navbar__item">
+                <a class="navbar__link" href="../../pages/admin/register.html">REGISTRARSE</a>
+              </li>
+              <li class="navbar__item">
+                <a class="navbar__link" href="../../pages/admin/login.html">INGRESAR</a>
+              </li>
+              <li class="navbar__item">
+                <a class="navbar__link" href="../../index.html">CONTACTO</a>
+              </li>
+            </ul>
+            <picture>
+              <img src="../../img/branding/isotype.svg" alt="Isotipo de FunkoShop" />
+            </picture>
+          </nav>
+        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+      </footer>    
 </body>
-</html>   
+</html>
