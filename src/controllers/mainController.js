@@ -9,14 +9,25 @@ const index = async (req, res) => {
       { id: 3, nombre: "Producto 3" },
     ];
 */
-
 const productos = await model.findAll();
     res.render("inicio", { productos });
-
-
   };
+
+
+  const shop = async (req, res, next ) => {
+    let productos = await model.findAll();
   
+    if(req.query.cat){
+     productos = await model.findAll({
+      where: {categoria: req.query.cat}
+   });
+    }
+       res.render("shop", {productos});
+     };
+  
+
   module.exports = {
     index,
+    shop
   };
   

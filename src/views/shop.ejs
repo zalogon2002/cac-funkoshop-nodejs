@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHOP</title>
+    <link rel="stylesheet" href="../../css/index.css" />
+    <link rel="stylesheet" href="../../css/shop.css" />
+    <link rel="icon" type="image/x-icon" href="../../img/fav.png" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar container">
+        <picture class="navbar__logo">
+          <a href="/">
+            <img
+              src="../../img/branding/logo_light_horizontal.svg"
+              alt="logotipo Funkoshop"
+            />
+          </a>
+        </picture>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a class="navbar__link" href="#">SHOP</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../admin/login.html">CONTACTO</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../admin/login.html">LOGIN</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="./carrito.html">
+              <img src="../../img/icons/cart-icon.svg" alt="carrito" />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="shop-container">
+      <aside>
+        <form
+          action=""
+          method="get"
+          enctype="application/x-www-form-urlencoded"
+        >
+          <p>BUSCAR</p>
+          <input
+            type="search"
+            id="site-search"
+            name="BUSCAR"
+            placeholder="item o categoría"
+          />
+          <p>ORDENAR POR</p>
+          <select name="orden" id="orden">
+            <option value="mayorAMenor">Mayor a menor</option>
+            <option value="menorAMayor">Menor a mayor</option>
+            <option value="a-z">A - Z</option>
+            <option value="z-a">Z - A</option>
+            <option value="nuevoViejo">Más Nuevo al más Viejo</option>
+            <option value="">Más Viejo al más Nuevo</option>
+            <option value="">Más Vendidos</option>
+          </select>
+
+          <p>PRECIO</p>
+          <div class="min-max">
+            <label for="min">MIN</label>
+            <input type="text" placeholder="0" id="min" />
+            <!-- <label for="max"> - MAX</label> -->
+            <label for="max">MAX</label>
+            <input type="text" placeholder="0" id="max" />
+          </div>
+
+
+
+          <p>FILTRAR</p>
+          <div class="checkbox">
+            <input type="checkbox" name="filter1" id="filter1" value="nuevos" />
+            <label for="filter1"> NUEVOS </label>
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              name="filter2"
+              id="filter2"
+              value="ofertas"
+            />
+            <label for="filter2">OFERTAS</label>
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              name="filter3"
+              id="filter3"
+              value="edicionespecial"
+            />
+            <label for="filter3">EDICION ESPECIAL</label>
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              name="filter4"
+              id="filter4"
+              value="favoritos"
+            />
+            <label for="filter4">FAVORITOS</label>
+          </div>
+        </form>
+      </aside>
+
+      <main class="main-shop" style="    display: inline-grid;">
+        
+
+            <div class="slider__items">
+         
+                <% productos.forEach(producto => { %> 
+
+
+                    <article class="card-item">
+                        <a class="card-item__link"></a>
+                        <picture class="card-item__cover">
+                          <span class="card-item__tag">Nuevo</span>
+                          <img
+                            class="card-item__img--front"
+                            src="/uploads/productos/producto_<%= producto.id %>.jpg"
+                            alt="<%= producto.nombre %>"
+                          />
+                        </picture>
+                        <div class="card-item__content">
+                          <h4 class="card-item__name"><%= producto.nombre %></h4>
+                          <p class="card-item__price">$ <%= producto.precio %></p>
+                          <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+                        </div>
+                      </article>
+
+                  <% }) %>
+
+ 
+          </div>
+
+ 
+    
+      </main>
+    </div>
+
+    <footer>
+      <nav class="navbar container">
+        <ul class="navbar__item">
+          <li class="navbar__item">
+            <a class="navbar__link" href="#">SHOP</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../admin/login.html">INGRESAR</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../admin/login.html">CONTACTO</a>
+          </li>
+        </ul>
+        <picture>
+          <img
+            src="../../img/branding/isotype.svg"
+            alt="Isotipo de FunkoShop"
+          />
+        </picture>
+      </nav>
+      <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer>
+  </body>
+</html>

@@ -11,10 +11,10 @@ const controller = require("../controllers/mainController");
 // ACA LLAMO AL METODO PARA TRAER EL INDEX
 router.get("/", controller.index);
 
+router.get("/shop", controller.shop);
 
 // EXPORTAMOS ESTE MODULO router PARA PODER USARLO FUERA
 module.exports = router;
-
 
 
 // app.set("views", "./src/views);
