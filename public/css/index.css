@@ -177,21 +177,28 @@ header {
 /* HERO */
 
 .hero,
-.hero2,
-.hero3 {
+.hero2 {
   background-image: url(../img/funkos-banner.webp);
   padding: var(--spacing-128);
   background-size: cover;
   background-attachment: fixed;
   background-position-x: center;
+  position: relative;
 }
 
 .hero2 {
   background-image: url(../img/ban1.png);
 }
-
-.hero3 {
-  background-image: url(../img/ban2.jpg);
+.sombra {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:black;
+  opacity: 10%; 
+  z-index: 1; /* Coloca la sombra detrás del texto */
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.5); /* Sombra interior para resaltar */
 }
 
 .hero__content {
@@ -199,6 +206,7 @@ header {
   flex-direction: column;
   gap: var(--spacing-20);
   align-items: start;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .hero__title {
@@ -220,6 +228,8 @@ header {
   padding: var(--spacing-12) var(--spacing-68);
   border-radius: 50px;
   font-weight: 500;
+  z-index: 9;
+text-shadow: none;
 }
 
 /* COLECCIONES */
