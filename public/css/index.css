@@ -1571,3 +1571,34 @@ input .agregarCarrito [type="text"] {
     line-height: normal;
   }
 }
+
+ .toCart{
+  font-size: var(--font-xsmall);
+  text-transform: uppercase;
+  background-color: var(--primary-solid);
+  color: var(--light-font-solid);
+  padding: var(--spacing-8) var(--spacing-12);
+  width: 50%;
+  margin: auto;
+  border: none;
+  font-weight: bold;
+  margin-top: 15px;
+  border-radius: 5px;text-align: center;
+}
+
+picture.card-item__cover {
+  height: 250px;
+}
+
+img {
+    object-fit: contain;
+}
+
+.card-item0 {
+  height: 500px;
+}
+
+.adCon {
+  text-align: center;
+  margin: 20px 0;
+}

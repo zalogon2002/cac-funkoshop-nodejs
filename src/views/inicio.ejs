@@ -8,32 +8,8 @@
     <link rel="icon" type="image/x-icon" href="img/fav.png" />
   </head>
   <body>
-    <header>
-      <nav class="navbar container">
-        <picture class="navbar__logo">
-          <a href="/">
-            <img
-              class=""
-              src="./img/branding/logo_light_horizontal.svg"
-              alt="logotipo Funkoshop"
-            />
-          </a>
-        </picture>
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a class="navbar__link" href="/shop">SHOP</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="/login">LOGIN</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__cart" href="./pages/shop/carrito">
-              <img src="./img/icons/cart-icon.svg" alt="carrito" />
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+  
+    <%- include('./partials/header') %>    
 
     <div class="glide">
       <div class="glide__track" data-glide-el="track">
@@ -46,7 +22,7 @@
                 <p class="hero__text">
                   Descubrí el próximo Funko Pop de tu colección.
                 </p>
-                <a class="hero__link" href="/shop?cat=7">SHOP</a>
+                <a class="hero__link" href="/shop?cat=7">HARRY SHOP</a>
               </article>
             </section>
           </li>
@@ -57,7 +33,7 @@
                 <p class="hero__text">
                   Descubrí el próximo Funko Pop de tu colección.
                 </p>
-                <a class="hero__link" href="/shop?cat=8">SHOP</a>
+                <a class="hero__link" href="/shop?cat=8">STAR SHOP</a>
               </article>
             </section>
           </li>
@@ -68,7 +44,18 @@
     <main class="main-container">
 
 
-      <% productos.forEach(producto => { %> 
+      <% 
+
+      count = 0;
+
+      productos.forEach(producto => {
+        
+if(producto.codigo == 8899 || producto.codigo == 10024){
+        
+        %> 
+
+  
+
 
 
         <section class="coleccion container">
@@ -88,7 +75,12 @@
           </picture>
         </section>
 
-      <% }) %>
+   
+
+
+      <% 
+      }
+    }) %>
 
       
     
@@ -104,7 +96,7 @@
             <% productos.forEach(producto => { %> 
 
               <li class="glide__slide">
-                <article class="card-item">
+                <article class="card-item card-item0">
                   <a class="card-item__link"></a>
                   <picture class="card-item__cover">
                     <span class="card-item__tag">Nuevo</span>
@@ -119,7 +111,10 @@
                     <h4 class="card-item__name"><%= producto.nombre %></h4>
                     <p class="card-item__price">$ <%= producto.precio %></p>
                     <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
-                  </div>
+  
+                  </div><div class="adCon">
+                  <a class="toCart" data-cod="<%= producto.id %>" href="javascript:void(0);" onclick="addCart(this)">Agregar</a>
+                </div>
                 </article>
               </li>
 
@@ -202,6 +197,38 @@
           },
         },
       }).mount();
+
+
+
+      function addCart(e){
+
+const cod = e.getAttribute("data-cod"); 
+
+let cookie = getCookie('cart');
+
+    if(! cookie){
+    document.cookie = "cart="+JSON.stringify([cod]);
+    } else {
+        let currCookie = JSON.parse(cookie);
+
+        if(cod){
+  if(currCookie.indexOf(cod) === -1 ){
+  currCookie.push(cod);
+  document.cookie = "cart="+JSON.stringify(currCookie.filter(Boolean));
+ 
+    }
+        }
+
+    }
+    window.location.href = "/cart";
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
     </script>
   </body>
 </html>

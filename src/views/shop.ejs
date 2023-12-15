@@ -9,31 +9,10 @@
     <link rel="icon" type="image/x-icon" href="../../img/fav.png" />
   </head>
   <body>
-    <header>
-      <nav class="navbar container">
-        <picture class="navbar__logo">
-          <a href="/">
-            <img
-              src="../../img/branding/logo_light_horizontal.svg"
-              alt="logotipo Funkoshop"
-            />
-          </a>
-        </picture>
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a class="navbar__link" href="#">SHOP</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="/login">LOGIN</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="./cart">
-              <img src="../../img/icons/cart-icon.svg" alt="carrito" />
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <%- include('./partials/header') %>    
+   
+
+
     <div class="shop-container">
       <aside>
 
@@ -72,12 +51,13 @@
         </form>
       </aside>
 
-      <main class="main-shop" style="    display: inline-grid;">
+      
+      <main class="slider__items2">
         
-            <div class="slider__items">
-        
+          
+       
                 <% productos.forEach(producto => { %> 
-
+<div class="artCont">
                     <article class="card-item">
                         <picture class="card-item__cover">
                           <span class="card-item__tag">Nuevo</span>
@@ -92,15 +72,10 @@
                           <p class="card-item__price">$ <%= producto.precio %></p>
                           <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
                         </div>
-                        <a class="toCart" data-cod="<%= producto.codigo %>" href="javascript:void(0);" onclick="addCart(this)">Agregar</a>
+                        <a class="toCart" data-cod="<%= producto.id %>" href="javascript:void(0);" onclick="addCart(this)">Agregar</a>
                       </article>
-
+                    </div>
                   <% }) %>
-
- 
-          </div>
-
- 
     
       </main>
     </div>
@@ -172,11 +147,12 @@ let cookie = getCookie('cart');
   if(currCookie.indexOf(cod) === -1 ){
   currCookie.push(cod);
   document.cookie = "cart="+JSON.stringify(currCookie.filter(Boolean));
+ 
     }
         }
 
     }
-
+    window.location.href = "/cart";
 }
 
 

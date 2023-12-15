@@ -8,8 +8,9 @@ const productos = await model.findAll();
   };
 
   const cart = async (req, res) => {
+    let productos = await model.findAll();
 
-       res.render("cart");
+       res.render("cart",{productos});
      };
 
   const shop = async (req, res, next ) => {
@@ -45,9 +46,7 @@ const productos = await model.findAll();
       ],
       });
      }
-    
-
-
+  
  
      if(req.query.search){
       const name = req.query.search;

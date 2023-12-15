@@ -70,7 +70,9 @@
     justify-content: space-between;
      padding: 15px;
 }
-
+.item_resume{
+    display: none;
+}
 main {
     width: 80%;
     max-width: 1200px;
