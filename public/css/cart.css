@@ -1,0 +1,148 @@
+.goCheckout {
+    font-size: var(--font-xsmall);
+    text-transform: uppercase;
+    background-color: var(--primary-solid);
+    color: var(--light-font-solid);
+    padding: var(--spacing-8) var(--spacing-12);
+    width: 100%;
+    border: none;
+    font-weight: bold;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.resume {
+    background: #eee;
+    width: 350px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #cdcdcd;
+}
+
+.resume{
+    display: flex;
+    flex-direction: column;
+}
+
+.resume div {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.resume_container {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.resume_container h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid red;
+    width: max-content;
+}
+
+
+.itemImg {
+    object-fit: contain;
+}
+.info {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.space {
+    width: 100px;
+    object-fit: contain;
+}
+.item_resume,.header_items {
+    background: #eee;
+    box-shadow: 0 0 15px #cdcdcd;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+    justify-content: space-between;
+     padding: 15px;
+}
+
+main {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cont {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.plusInp{
+    width: 80px;
+    height: 40px;
+    border: 1px solid #cdcdcd;
+    font-size: 20px;
+    text-align: center !important;
+}
+
+.btnCont {
+    display: flex;
+    flex-direction: column;
+}
+
+.btnCont input {
+    background: red;
+    border: navajowhite;
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+}
+
+.details p {
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.price {
+    margin-top: 10px;
+}
+
+.header_items {
+    display: inline-flex;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 25px;
+    border-bottom: 3px solid red;
+    width: max-content;
+    margin: 25px 0;
+    line-height: 1.6;
+}
+
+footer {
+    margin-top: 50px;
+}
+
+
+.resume hr {
+    border: none;
+    border-top: 2px solid red;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

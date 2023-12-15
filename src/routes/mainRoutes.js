@@ -12,6 +12,7 @@ const controller = require("../controllers/mainController");
 router.get("/", controller.index);
 
 router.get("/shop", controller.shop);
+router.get("/cart", controller.cart);
 
 // EXPORTAMOS ESTE MODULO router PARA PODER USARLO FUERA
 module.exports = router;
