@@ -1,56 +1,113 @@
+
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-<body>
-    <!-- QUITO EL HEADER PARA QUE LA INFO APAREZCA MAS LIMPIA -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Funkoshop</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/login-register.css" />
+    <link rel="icon" type="image/x-icon" href="../img/fav.png" />
+  </head>
+  <body>
    
-  <main> 
-    <h1>Login</h1>
+    <%- include('../partials/header') %>    
 
 
-    <% if (typeof errors != 'undefined') { %>
+    <main class="admin-margin">
+      <h2 class="admin-title">INGRESAR A MI CUENTA</h2>
+     
+     
+      <% if (typeof errors != 'undefined') { %>
 
-     <ul>
-      <% errors.forEach(error => { %> 
-        <li><%= error.msg %></li>
-      <% }) %>
-    </ul>
-    <% } %>
+        <ul>
+         <% errors.forEach(error => { %> 
+           <li><%= error.msg %></li>
+         <% }) %>
+       </ul>
+       <% } %>
+   
 
-<form action="/login" method="post">
+      <form
+      action="/login"
+        method="post"
+        enctype="application/x-www-form-urlencoded"
+        class="login-container"
+      >
+        <div>
+          <div class="login-item">
+            <label for="email" class="admin-label-text">Email:</label>
+            <input
+              type="email"
+              placeholder="nombrecuenta@correo.com"
+              class="admin-input-line"
+              id="email"
+              autocomplete="email"
+              name="email"
+              value="<% typeof values != 'undefined' ? values.email : '' %> "
+            />
+          </div>
+          <div class="login-item">
+            <label for="password" class="admin-label-text">Contaseña: </label>
+            <input
+              type="password"
+              placeholder="********"
+              class="admin-input-line"
+              id="password"name="password"
+            />
+          </div>
 
-<div>
-<label for="email">Correo</label>
-<input 
-type="email"
-id="email"
-name="email"
-value="<% typeof values != 'undefined' ? values.email : '' %> "
-/>
-</div>
+          <div class="login-item">
+            <label for="password_confirmation" class="admin-label-text">Confirmar contraseña</label>
+            <input 
+            type="password"
+            id="password_confirmation"class="admin-input-line"
+            name="password_confirmation"
+            />
+            </div>
 
-<div>
-    <label for="pasword">Contraseña</label>
-    <input type="password" id="password" name="password" />
-</div>
-    
-<div>
-    <label for="password_confirmation">Confirmar contraseña</label>
-    <input 
-    type="password"
-    id="password_confirmation"
-    name="password_confirmation"
-    />
-    </div>
 
-    <button type="submit">Enviar</button>
-</form>
-  </main>
-  
+        </div>
+        <div class="login-item-label">
+          <button type="submit" class="login-item-button">Ingresar</button>
+          <input type="checkbox" name="recordar" id="recordar" />
+          <label for="recordar" class="checkbox-title"> Recordarme</label>
+        </div>
+        <div>
+          <a href="../admin/register.html" class="password"
+            >Olvidé mi contraseña.</a
+          >
+        </div>
+      </form>
+    </main>
+    <footer>
+      <nav class="navbar container">
+        <ul class="navbar__item">
+          <li class="navbar__item">
+            <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../admin/register.html"
+              >REGISTRARSE</a
+            >
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../admin/login.html">INGRESAR</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#">CONTACTO</a>
+          </li>
+        </ul>
+        <picture>
+          <img
+            src="../../img/branding/isotype.svg"
+            alt="Isotipo de FunkoShop"
+          />
+        </picture>
+      </nav>
+      <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer>
+  </body>
+</html>
 
-</body>
-</html>   
+

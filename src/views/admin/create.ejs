@@ -1,63 +1,106 @@
+
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Inicio</title>
-	</head>
-	<body>
-		<%- include('../partials/header') %>
-		<main>
-			<h1>Crear producto</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CREATE | FunkoShop</title>
+    <link rel="stylesheet" href="../../css/index.css" />
+	<style>
+	
+	#createF div{
+		margin-bottom: 25px;
+	}
 
-			<% if (typeof errors != 'undefined') { %>
-				<ul>
-					<% errors.forEach(error =>  { %>
-						<li><%= error.msg %></li>
-					<% }) %>
-				</ul>
-			<% } %>
+	#createF {
+		margin-top: 25px;
+	}
+
+	</style>
+  </head>
+  <body>
+	<%- include('../partials/header') %>   
+    <main class="main-container">
+      <div class="create container">
+       
+
+		<% if (typeof errors != 'undefined') { %>
+			<ul>
+				<% errors.forEach(error =>  { %>
+					<li><%= error.msg %></li>
+				<% }) %>
+			</ul>
+		<% } %>
+
+		<h2 class="create_tittle">CREAR NUEVO ITEM</h2>
+		<form action="/admin/productos" method="post" enctype="multipart/form-data" id="createF">
+
+			<div class="sku_precio_stock">
+				<label for="nombre">Código:
+				</label>
+				<input type="text" id="codigo" name="codigo" value="<% typeof values != 'undefined' ? values.codigo : '' %>" required minlength="3"/>
+			</div>
+
+	<div class="categoria_licencia">
+				<label for="nombre">Categoría:
+				</label>
+
+	  <select name="categoria" id="categoria">
+		<option value="7">Harry</option>
+		<option value="8">Star</option>
+	  </select>
+			</div>
 
 
-			<form action="/admin/productos" method="post" enctype="multipart/form-data">
+			<div class="nombre_producto">
+				<label class="nombre_producto_label_text" for="nombre">Nombre:
+				</label>
+				<input class="nombre_producto_input_line" type="text" id="nombre" name="nombre" value="<% typeof values != 'undefined' ? values.nombre : '' %>" required minlength="3"/>
+			</div>
 
-				<div>
-					<label for="nombre">Código:
-					</label>
-					<input type="text" id="codigo" name="codigo" value="<% typeof values != 'undefined' ? values.codigo : '' %>" required minlength="3"/>
+			<div class="sku_precio_stock">
+				<label for="precio">Precio:
+				</label>
+				<input type="number" id="precio" name="precio" value="<% typeof values != 'undefined' ? values.precio : '' %>" required min="1"/>
 				</div>
-
-        <div>
-					<label for="nombre">Categoría:
+				<div class="carga_imagenes">
+					<label for="imagen">Imagen:
 					</label>
-
-          <select name="categoria" id="categoria">
-            <option value="7">Harry</option>
-            <option value="8">Star</option>
-          </select>
+					<input type="file" id="imagen" name="imagen" accept="image/*"/>
 				</div>
+				<button  class="botones_ingreso_agregar" translate="submit">Guardar</button>
+
+			</form>
 
 
-				<div>
-					<label for="nombre">Nombre:
-					</label>
-					<input type="text" id="nombre" name="nombre" value="<% typeof values != 'undefined' ? values.nombre : '' %>" required minlength="3"/>
-				</div>
 
-				<div>
-					<label for="precio">Precio:
-					</label>
-					<input type="number" id="precio" name="precio" value="<% typeof values != 'undefined' ? values.precio : '' %>" required min="1"/>
-					<div>
-						<label for="imagen">Imagen:
-						</label>
-						<input type="file" id="imagen" name="imagen" accept="image/*"/>
-					</div>
-					<button translate="submit">Guardar</button>
+      </div>      
+    </main>
+    <footer class="footer">
+      <nav class="navbar__footer container">
+        <ul class="navbar__footer__menu">
+          <li class="navbar__footer__item">
+            <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
+          </li>
+          <li class="navbar__footer__item">
+            <a class="navbar__link" href="../admin/register.html">REGISTRARSE</a>
+          </li>
 
-				</form>
+          <li class="navbar__footer__item">
+            <a class="navbar__link" href="../admin/login.html">INGRESAR</a>
+          </li>
 
-			</main>
-			<%- include('../partials/footer') %></body>
-	</body>
+          <li class="navbar__footer__item">
+            <a class="navbar__link" href="#">CONTACTO</a>
+          </li>
+        </ul>
+
+        <picture>
+          <img src="../../img/branding/isotype.svg" alt="Isotipo de FunkoShop" />
+        </picture>
+      </nav>
+      <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer>
+  </body>
 </html>
+

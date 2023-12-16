@@ -1,5 +1,5 @@
-
 const model = require("../models/Producto");
+
 
 const index = async (req, res) => {
 
@@ -63,4 +63,8 @@ const productos = await model.findAll();
     shop,
     cart
   };
-  
+
+
+
+
+ 

@@ -934,17 +934,30 @@ input[type="text"] {
   height: 44.285px;
   flex-shrink: 0;
 }
-
-.agregar {
-  width: 1126px;
-  height: 928.948px;
-  margin: 0;  
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}th, td {
+  text-align: center;
+  padding: 8px;
 }
 
+
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.agregar.container {
+  margin: 20px;
+}
+td.imgtd {
+  display: flex;
+  justify-content: center;
+}
 .agregar__listado{
   display: flex;
   align-items: center;
-  padding-right: 94px;
   margin: 36px auto;  
   justify-content: space-between;
 }
@@ -954,9 +967,12 @@ input[type="text"] {
   font-size: var(--font-large);  
 }
 
-.agregar__boton{
+.agregar__boton {
   display: flex;
-  gap: var(--spacing-20);  
+  gap: var(--spacing-20);
+  background: red;
+  color: white;    text-align: center;
+  padding: 7px 10px;    border-radius: 5px;
 }
 
 .agregar__boton__tittle{
@@ -983,11 +999,7 @@ input[type="text"] {
   font-family: var(--alternative-font);
   font-size: var(--font-medium);
   font-weight: 400;
-  vertical-align: top;
-  padding-top: 24px;
-  padding-left: 8px;
-  justify-content: space-between;
-
+  text-align: center;
 }
 
 .agregar__tabla__lapiz{
@@ -1004,7 +1016,11 @@ input[type="text"] {
 
 
 td img {
-    object-fit: contain;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 1px solid #cdcdcd;
+  width: 50px;
+  height: 50px;
 }
 
 button {

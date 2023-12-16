@@ -9,43 +9,16 @@
     <link rel="stylesheet" href="../../css/admin.css">
 </head>
 <body>
-    <header> 
-        <nav class="navbar container">
-          <picture class="navbar__logo">
-            <a href="/">
-              <img src="../../img/branding/logo_light_horizontal.svg" alt="logotipo Funkoshop"/>
-            </a>
-          </picture>
-          <ul class="navbar__menu">
-            <li class="navbar__item">
-              <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
-            </li>
-            <li class="navbar__item">
-              <a class="navbar__link" href="../../pages/admin/admin.html">ADMIN</a>
-            </li>
-            <li class="navbar__item">
-              <a class="navbar__link" href="../../index.html">SALIR</a>
-            </li>
-            <li class="navbar__item">
-              <a class="navbar__link" href="../../pages/shop/carrito.html">
-                <img src="../../img/icons/cart-icon.svg" alt="carrito" />
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+  <%- include('../partials/header') %>    
       <main class="admin-container">
         <div class="admin container">
-          <div class="admin__search container">
-              <img src="../../img/icons/search_icon.svg" alt="buscar-producto">
-              <input type="search" name="buscar" id="buscar">
-          </div>
+    
         <div class="agregar container">
           <section class="agregar__listado">
             <h2 class="agregar__listado__tittle">LISTADO DE PRODUCTOS</h2>
             <div class="agregar__boton">       
-              <a class="agregar__boton__tittle" href="/admin/productos/create">AGREGAR</a>
-              <button class="agregar__boton__dibujo">+</button>
+              <a class="agregar__boton__tittle" href="/admin/productos/create">NUEVO PRODUCTO</a>
+
             </div>
            
           </section>    
@@ -53,8 +26,9 @@
           
 
 
+          <div style="overflow-x:auto;">
           <table class="agregar__tabla">
-            <thead>
+
                 <tr>
                   <th>Id</th>
                   <th>Código</th>
@@ -62,9 +36,11 @@
                   <th>Nombre</th>
                   <th>Precio</th> 
                   <th>Imagen</th>
+                  <th>Operaciones</th>
                 </tr>
-            </thead>
-            <tbody>
+         
+       
+                
                 <% productos.forEach(producto => { %>
                 <tr>
                     <td><%= producto.id %></td>
@@ -72,15 +48,15 @@
                     <td><%= producto.categoria %></td>
                     <td><%= producto.nombre %></td>
                     <td>$ <%= producto.precio %></td>
-                    <td><img 
-                        width="100"    height="100";
+                    <td class="imgtd"><img 
+                        width="50"    height="50";
                         src="/uploads/productos/producto_<%= producto.id %>.jpg" 
                         alt="<%= producto.nombre %>"
                         />
                     </td>
 
             <td>
-                        <a href="/admin/productos/<%= producto.id %>/edit"><img class="agregar__tabla__lapiz" src="../../img/icons/edit_pencil.svg" alt="editar-producto"></a> |
+                        <a href="/admin/productos/<%= producto.id %>/edit"><img class="agregar__tabla__lapiz" src="../../img/icons/edit_pencil.svg" alt="editar-producto"></a>
                         <!-- <a href="/admin/productos/<%= producto.id %>/edit">Editar</a> -->
     <!-- </main>
     HACGO UN OVERRIDE (?_) DEL METODO POST CON EL METODO DELETE -->
@@ -96,8 +72,9 @@
             </td>
                     </tr>
                     <% }) %>
-            </tbody>
-        </table>
+          
+                    
+        </table></div>
 
         </div>
         </div> 

@@ -43,7 +43,13 @@ try {
 // IDEM PARA EL LOGIN
 const login = (req, res) => {
     // EN LA RUTA DEL LOGIN authController.js VAMOS A PONER ESA VISTA
-    res.render("auth/login");
+    
+    if(req.session.userId){
+      res.redirect("/admin/productos");
+    }else{
+      res.render("auth/login");
+    }
+  
 };
 
 const postLogin = async (req, res) => {
@@ -84,7 +90,7 @@ try {
     req.session.userId = user.id;
     // ESTARIA GUARDANDO UNA SESION DEL LOGIN
     // res.send("Login");
-    res.redirect("/");
+    res.redirect("/admin/productos");
    }
   } catch (error) {
     console.error(error);

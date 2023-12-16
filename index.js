@@ -37,6 +37,27 @@ const isLogin = (req, res, next) => {
   next();
 };
 
+
+
+
+app.use((req, res, next) => {
+let data = 'LOGIN';
+let icon = 'sign-in';
+let out = 0;
+  if (req.session.userId) {
+    data = '¡HOLA ADMIN!';
+    icon = 'industry';
+    out = 1;
+  }
+  res.locals.miVariableHeader = data;
+  res.locals.logIcon = icon;
+  res.locals.out = out;
+  
+
+  next();
+});
+
+
 // app.use((req, res, next) => {
 //   res.send("Sitio en mantenimiento");
 // });
@@ -82,3 +103,6 @@ try {
 
 console.log(`http://localhost:${PORT}`);
 });
+
+
+
