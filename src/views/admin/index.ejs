@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN | Funkshop</title>
     <link rel="stylesheet" href="../../css/index.css">
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../css/admin.css"><link rel="icon" type="image/x-icon" href="../../../img/fav.png" />
 </head>
 <body>
   <%- include('../partials/header') %>    
@@ -56,7 +56,7 @@
                     </td>
 
             <td>
-                        <a href="/admin/productos/<%= producto.id %>/edit"><img class="agregar__tabla__lapiz" src="../../img/icons/edit_pencil.svg" alt="editar-producto"></a>
+                        <a href="/admin/productos/edit<%= producto.id %>"><img class="agregar__tabla__lapiz" src="../../img/icons/edit_pencil.svg" alt="editar-producto"></a>
                         <!-- <a href="/admin/productos/<%= producto.id %>/edit">Editar</a> -->
     <!-- </main>
     HACGO UN OVERRIDE (?_) DEL METODO POST CON EL METODO DELETE -->

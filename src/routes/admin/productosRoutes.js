@@ -32,7 +32,7 @@ router.get("/create", controller.create);
 router.post("/", upload.single("imagen"), validations, controller.store);
 
 // ESTA ES LA RUTA DE EDITAR PRODUCTOS
-router.get("/:id/edit", controller.edit);
+router.get("/edit:id", controller.edit);
 // EN LA RUTA EDITAR TENGO QUE PODER SUBIR UNA IMAGEN Y PODER VALIDAR
 router.put("/:id", upload.single("imagen"), validations, controller.store);
 

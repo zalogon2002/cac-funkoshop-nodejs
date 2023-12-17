@@ -78,6 +78,7 @@ const edit = async (req, res) => {
     try{
         // ESTA CONSTANTE ME VA A TRAER UN PRODUCTO QUE CORRESPONDA CON ESTE id
     const producto = await model.findByPk(req.params.id); 
+  
     // DEBEMOS CHEQUEAR SI EXISTE EL PRODUCTO
     if (producto){
 // SI EL PRODUCTO EXISTE LO MUESTRO - DEBO RENDERIZAR LA VISTA DE edit CON LOS DATOS DEL PRODUCTO, Y AL OBJETO values LE ASIGNO EL PRODUCTO
@@ -123,6 +124,7 @@ const update = async (req, res) => {
 
 // ESTO PUEDE FALLAR, ASIQUE TB VA UN try Y UN catch
 try {
+    console.log('NOMBREEEE::: '+req.body.nombre)
     // CREO LA CONSTANTE affected QUE DEVUELVE UN ARRAY (LINEA 127) QUE TIENE LA CANTIDAD DE FILAS AFECTADAS (DEBIERA SER 1 ARRAY DE 1 ELEMENTO CON EL NRO 1 XQ ESTOY MODIFICANDO UN SOLO PRODUCTO)
    const affected = await model.update(req.body, {
         where: {

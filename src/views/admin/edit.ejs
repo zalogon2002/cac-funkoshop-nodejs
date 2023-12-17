@@ -1,68 +1,172 @@
+
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-<body>
-  <%- include('../partials/header') %>
-  <main> 
-    <h1>Editar producto</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDIT | FunkoShop</title>
+    <link rel="stylesheet" href="../../css/index.css" />
+    <link rel="icon" type="image/x-icon" href="../../../img/fav.png" />
+	<style>
+	
+	#createF div{
+		margin-bottom: 25px;
+	}
 
-    <% if (typeof errors != 'undefined') { %>
-      <ul>
-        <% errors.forEach(error =>  { %>
-          <li><%= error.msg %></li>
-        <% }) %>
-      </ul>
-        <% } %>
+	#createF {
+		margin-top: 25px;
+	}
 
-<!-- SOBREESCRIBO CON EL OVERRIDE DEL index.js EL METODO PUT -->
-<!-- SE ENVIA COMO POST PERO LLEGA COMO PUT -->
-    <form action="/admin/productos/<%= values.id %>?_method=PUT" 
-    method="post" 
-    enctype="multipart/form-data">
+	</style>
+  </head>
+  <body>
+	<%- include('../partials/header') %>   
+    <main class="main-container">
+      <div class="create container">
+       
 
-<div>
-<label for="nombre">Nombre: </label>
-<input 
-type="text" 
-id="nombre" 
-name="nombre" 
-value="<% typeof values != 'undefined' ? values.nombre : '' %>"
-required
-minlength="3"
-/>
-</div>
+        <% if (typeof errors != 'undefined') { %>
+          <ul>
+            <% errors.forEach(error =>  { %>
+              <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+            <% } %>
 
-<div>
-<label for="precio">Precio: </label>
-<input 
-type="number" 
-id="precio" 
-name="precio"
-value="<% typeof values != 'undefined' ? values.precio : '' %>"
-required
-min="1"
-/>
-<div>
-    <label for="imagen">Imagen: </label>
-    <input 
-    type="file" id="imagen" name="imagen" accept="image/*" />
-    <div>
-      <!-- YA LE INDICO AL USUARIO QUE IMAGEN VA A TENER AHORA PARA EDITAR -->
-      <img 
-      width="100"
-      src="/uploads/productos/producto_<%= values.id %>.jpg" 
-      alt="<%= values.nombre %>"
-      />
- </div>
- <button translate="submit">Guardar</button>
+		<h2 class="create_tittle">EDITAR ITEM</h2>
+		<form action="/admin/productos/<%= values.id %>?_method=PUT" method="post" enctype="multipart/form-data" id="createF">
 
-</form>
+			<div class="sku_precio_stock">
+				<label for="nombre">Código:
+				</label>
+				<input type="text" id="codigo" name="codigo" value="<%= values.codigo %>" required minlength="3"/>
+			</div>
 
-  </main>
-  <%- include('../partials/footer') %>
-</body>
-</html>   
+	<div class="categoria_licencia">
+				<label for="categoria">Categoría:
+				</label>
+
+	  <select name="categoria" id="categoria">
+
+      <% if(values.categoria == 7){ %>
+      
+      	<option value="7" selected>Harry</option>
+        <% }else{ %>
+        
+        
+        	<option value="7">Harry</option>
+        
+          <%  } %>
+
+          <% if(values.categoria == 8){ %>
+      
+            <option value="8" selected>Star</option>
+            <% }else{ %>
+              <option value="8">Star</option>
+            
+              <%  } %>
+	
+		
+	  </select>
+			</div>
+
+
+
+      <div  class="nombre_producto">
+        <label class="nombre_producto_label_text" for="nombre">Nombre: </label>
+        <input  class="nombre_producto_input_line"
+        type="text" 
+        id="nombre" 
+        name="nombre" 
+        value="<%= values.nombre %>"
+        required
+        minlength="3"
+        />
+        </div>
+
+
+        <div class="sku_precio_stock">
+          <label for="precio">Precio: </label>
+          <input 
+          type="number" 
+          id="precio" 
+          name="precio"
+          value="<%= values.precio %>"
+          required
+          min="1"
+          />
+          </div>
+
+
+        <div class="carga_imagenes">
+          <label for="imagen">Imagen: </label>
+          <input 
+          type="file" id="imagen" name="imagen" accept="image/*" />
+        </div>
+
+        <div class="editImg">
+          <!-- YA LE INDICO AL USUARIO QUE IMAGEN VA A TENER AHORA PARA EDITAR -->
+          <img id="blah"
+          width="100"
+          src="/uploads/productos/producto_<%= values.id %>.jpg" 
+          alt="<%= values.nombre %>"
+          />
+     </div>
+
+				<button  class="botones_ingreso_agregar" translate="submit">Guardar</button>
+
+			</form>
+
+
+
+      </div>      
+    </main>
+    <footer class="footer">
+      <nav class="navbar__footer container">
+        <ul class="navbar__footer__menu">
+          <li class="navbar__footer__item">
+            <a class="navbar__link" href="../../pages/shop/shop.html">SHOP</a>
+          </li>
+          <li class="navbar__footer__item">
+            <a class="navbar__link" href="../admin/register.html">REGISTRARSE</a>
+          </li>
+
+          <li class="navbar__footer__item">
+            <a class="navbar__link" href="../admin/login.html">INGRESAR</a>
+          </li>
+
+          <li class="navbar__footer__item">
+            <a class="navbar__link" href="#">CONTACTO</a>
+          </li>
+        </ul>
+
+        <picture>
+          <img src="../../img/branding/isotype.svg" alt="Isotipo de FunkoShop" />
+        </picture>
+      </nav>
+      <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer>
+
+    <script>
+    
+      const imgInp = document.getElementById("imagen");
+      const blah = document.getElementById("blah");
+      imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+}
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
